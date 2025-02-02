@@ -39,7 +39,7 @@ async function placeOrderPayStack(req, res) {
         }
         const newOrder = await Order.create(orderData)
         const currency = 'NGN'
-        const delivery_fee = 10
+        const delivery_fee = 150
 
         const user = await User.findById(userId);
         if (!user) {
