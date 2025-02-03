@@ -14,13 +14,13 @@ function userRefresh(req, res) {
                 return reject(res.status(403).json({ message: 'RefreshToken is invalid' }));
             }
 
-            const newAccessToken = jwt.sign({ id: decoded.id }, process.env.ACCESS_TOKEN, { expiresIn: '15m' });
+            const newAccessToken = jwt.sign({ id: decoded.id }, process.env.ACCESS_TOKEN, { expiresIn: '1h' });
 
             res.cookie('accessToken', newAccessToken, {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'None',
-                maxAge: 60 * 1000
+                maxAge: 60 * 60 * 1000
             });
 
             resolve(true);
