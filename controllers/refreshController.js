@@ -19,13 +19,13 @@ function handleRefreshToken(req, res) {
                 }
 
 
-                const newAccessToken = jwt.sign({ email: decoded.email }, process.env.ACCESS_TOKEN, { expiresIn: '1m' });
+                const newAccessToken = jwt.sign({ email: decoded.email }, process.env.ACCESS_TOKEN, { expiresIn: '30m' });
 
                 res.cookie('accessToken', newAccessToken, {
                     httpOnly: true,
                     secure: true,
                     sameSite: 'None',
-                    maxAge: 60 * 1000
+                    maxAge: 30 * 60 * 1000
                 });
                 resolve(true);
                 console.log('New AccessToken')
